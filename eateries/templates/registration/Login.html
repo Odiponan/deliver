@@ -1,0 +1,55 @@
+<DOCTYPE html>
+    <!--[if It IE 7]>   <html class="no-js It-ie9 It-ie8 It-ie7"> <![endif]-->
+    <!--[if IE 7]>      <html class="no-js It-ie9 It-ie8"> <![endif]-->
+    <!--[if IE 8]>      <html class="no-js It-ie9"> <![endif]-->
+    <!--[if gt IE 8]>   <html class="no-js"> <!--<![endif]-->
+    <html>
+        <head>
+            <meta charset="utf-8">
+            <meta http-equiv"X-UA-compatible" content="IE=edge">
+            <tittle></tittle>
+            <meta name="description" content"">
+            <meta name="viewpoint" content"width=device-width, initial-scale=1">
+            <link rel="stylesheet"href"">
+        </head>
+        <body>
+
+      {% for message in messages %}
+      <div class "alert alert-{{ message.tags }} alert-dismissible fade show "role" alert">
+      <strong>Message:</strong> {{ message }}
+      <button type="button" class="close" data-dismiss="alert" aria-label="close">
+      <span aria-hidden="true">&times;</span>
+      </button>
+      </div>
+      {% endfor %}
+
+        
+     <h3>Sign In</h3>
+            
+     <form action="/signin" method="post">
+         <label for="">Username</label>
+         <input type="username" id="username" name="username" placeholder="Enter Your Username" Required>
+                    
+    
+         <label for="">Password</label>
+         <input type="password" id="pass1" name="pass1" placeholder="Enter Your Password" Required>
+         <br>
+    
+         
+         <button type="Submit">Sign In<button>
+        
+                    
+                    
+    
+    
+         
+         
+         
+         
+         
+                 <script src=""async defer></script>    
+                    
+            </body    >
+            </html>
+    
+    
