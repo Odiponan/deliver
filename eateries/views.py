@@ -13,6 +13,12 @@ from base64 import urlsafe_b64decode, urlsafe_b64encode
 from django.utils.encoding import force_bytes
 from django.utils.http import urlsafe_base64_encode
 from django.utils.encoding import force_text
+from django.contrib.auth.tokens import account_activation_token
+from django.core.mail import EmailMessage
+from django.contrib.auth import authenticate
+from django.contrib.auth import login
+from django.contrib.auth import logout
+from django.utils.http import urlsafe_base64_decode
 
 
 class Dashboard(LoginRequiredMixin, UserPassesTestMixin, View):
@@ -73,7 +79,9 @@ class OrderView(View):
 
        
 
-
+def html(request):
+    return render(request, 'customer/index.html')
+    
 class Index(View):
     def get(self, request, *args, **kwargs):
         return render(request, 'customer/index.html')

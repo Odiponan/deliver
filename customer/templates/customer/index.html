@@ -1,15 +1,17 @@
-{% extends 'customer/Index.html' %}
+{% extends 'customer/base.html' %}
+
 {% block content %}
-<div class=_"row justify-content center mt-5">
-    <div class="col-md-8 col-sm-12 offset-md-1 p-4 text-center">
-        <h1>Online Food Delivery Service</h1>
-    </div>
-    <div class="row justify-content-center mt-1">
-        <div class="card col-md-5 col-sm-12 offset-md-1 p-4 text center">
-            <h2>Place an Order!<h2>
-                <a href="{% url 'order' %}" class="btn btn-outline-primary">Order Now</button>
-            </div>
+<div class="container mb-5">
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-8 col-sm-12 offset-md-1 p-4 text-center">
+            <h1>Online Food Delivery Service</h1>
         </div>
     </div>
-{% endblock content %}
-
+    <div class="row justify-content-center mt-1">
+        <div class="card col-md-5 col-sm-12 offset-md-1 p-4 text-center">
+            <h2>Place an Order!</h2>
+            <a href="{% url 'order' %}" class="btn btn-outline-primary">Order Now</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

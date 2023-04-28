@@ -1,24 +1,29 @@
+import json
 from django.views import View
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.forms import EmailField
 from django.core.mail import send_mail
 from django.template import RequestContext
 from .models import MenuItem, OrderModel
+from django.db.models import Q
+
+
+def html(request):
+    return render(request, 'customer/index.html')
 
 class Index(View):
-    def get (self, request, *args, **kwargs):
+    def get(self, request, *args, **kwargs):
         return render(request, 'customer/index.html')
 
 
 
-def index(request):
-    customers = Customer.objects.all()
-    return render(request, 'customer/index.html', {'customers': customers})
-
-    
 class About(View):
     def get (self, request, *args, **kwargs):
         return render(request, 'customer/about.html')
+
+def home(request):
+    return render(request, 'home.html')
+
 
 class Order(View):
     def get(self, request):
@@ -28,15 +33,33 @@ class Order(View):
         appetizers = MenuItem.objects.filter(category__name__contains='Appetizer')
         drinks = MenuItem.objects.filter(category__name__contains='Drink')
         desserts = MenuItem.objects.filter(category__name__contains='Dessert')
-        entrees = MenuItem.objects.filter(category__name__contains='Entre')
+        entrees = MenuItem.objects.filter(category__name__contains='Entrees')
+        sweetpotatoes = MenuItem.objects.filter(category__name__contains='Sweetpotatoes')
+        cassava = MenuItem.objects.filter(category__name__contains='Cassava')
+        yams = MenuItem.objects.filter(category__name__contains='Yams')
+        irishptatoes = MenuItem.objects.filter(category__name__contains='Irishpotatoes')
+        arrowroots = MenuItem.objects.filter(category__name__contains='Arrowroots')
+        englishpotatoes = MenuItem.objects.filter(category__name__contains='Englishpotatoes')
+        ugali = MenuItem.objects.filter(category__name__contains='Ugali')
+        fish = MenuItem.objects.filter(category__name__contains='Fish')
+        kienyeji = MenuItem.objects.filter(category__name__contains='Kienyeji')
 
         # pass into context
         context = {
             'appetizers': appetizers,
             'drinks': drinks,
             'desserts': desserts,
-            'entres': entres,
-        }
+            'entrees': entrees,
+            'sweetpotatoes': sweetpotatoes,
+            'cassava': cassava,
+            'yams': yams,
+            'irishpotatoes': irishptatoes,
+            'arrowroots': arrowroots,
+            'englishpotatoes': englishpotatoes,
+            'ugali': ugali,
+            'fish': fish,
+            'kienyeji': kienyeji,
+        },
 
         # render the template
         return render(request, 'customer.html',context)
@@ -129,7 +152,7 @@ class MenuSearch(View):
             Q(price__icontains=query),
             Q(description__icontains=query)
         )
-        menu_items = ['drinks', 'appetizers', 'entres', 'desserts' ]
+        menu_items = ['drinks', 'appetizers', 'entrees', 'desserts', 'sweetpotatoes', 'cassava', 'yams', 'irishpotatoes', 'arrowroots', 'englishpotatoes', 'ugali', 'fish', 'kienyeji']
         context = { 
             'menu_items': menu_items 
         }

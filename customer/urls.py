@@ -18,7 +18,11 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.urls import path, include
 from customer.views import Index, About, Order, OrderConfirmation, OrderPayConfirmation, Menu, MenuSearch
+from .views import home
 
+urlpatterns = [
+    path('', home, name='home'),
+]
 
 
 urlpatterns = [
@@ -29,8 +33,9 @@ urlpatterns = [
     path('menu/search/', MenuSearch.as_view(), name='Menu-Search'),
     path('', Index.as_view(), name='index'),
     path('about/', About.as_view(), name='about'),
+    path('', home, name='home'),
     path('order/', Order.as_view(), name='order'),
-    path('order-confirmation/<int:pk>, OrderConfirmation.as_view(), name='order-confirmation'),
-    path('payment-confirmation/'OrderPayCnfirmation.as_view(), name='payment-confirmation').
+    path('order-confirmation/<int:pk>/', OrderConfirmation.as_view(), name='order-confirmation'),
+    path('payment-confirmation/', OrderPayConfirmation.as_view(), name='payment-confirmation')
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

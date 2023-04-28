@@ -10,6 +10,7 @@ class MenuItem(models.Model):
 
     class Meta:
         app_label = 'customer'
+        
 
 
     def __str__(self):
